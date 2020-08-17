@@ -19,7 +19,7 @@ INSERT INTO user (
     user_email,
     user_password,
     user_full_name
-) SELECT 'flavio', 'flavio@alurapic.com.br', '123', 'Flávio' WHERE NOT EXISTS (SELECT * FROM user WHERE user_name = 'flavio')
+) SELECT 'flavio', 'flavio@angularpic.com.br', '123', 'Flávio' WHERE NOT EXISTS (SELECT * FROM user WHERE user_name = 'flavio')
 `;
 
 const INSERT_DEFAULT_USER_2 = 
@@ -29,7 +29,7 @@ INSERT INTO user (
     user_email,
     user_password,
     user_full_name
-) SELECT 'almeida', 'almeida@alurapic.com.br', '123', 'Almeida' WHERE NOT EXISTS (SELECT * FROM user WHERE user_name = 'almeida')
+) SELECT 'almeida', 'almeida@angularpic.com.br', '123', 'Almeida' WHERE NOT EXISTS (SELECT * FROM user WHERE user_name = 'almeida')
 `;
 
 const PHOTO_SCHEMA = 
