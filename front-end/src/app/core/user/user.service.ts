@@ -10,6 +10,7 @@ import { User } from "./user";
 })
 export class UserService {
 
+    private _userName: string;
     private _userSubject: BehaviorSubject<User>;
 
     constructor(private _tokenService: TokenService) {
@@ -27,9 +28,23 @@ export class UserService {
         return this._userSubject.asObservable();
     }
 
+    logout(): void {
+        this._tokenService.removeToken();
+        this._userSubject.next(null);
+    }
+
+    isLogged(): boolean {
+        return this._tokenService.hasToken();
+    }
+
+    getUserName(): string {
+        return this._userName;
+    }
+
     private decodeAndNotify(): void {
         const token = this._tokenService.getToken();
         const user = jwtDecode(token) as User;
+        this._userName = user.name;
         this._userSubject.next(user);
     }
 }

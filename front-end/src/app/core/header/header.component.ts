@@ -1,4 +1,5 @@
-import { Component, Input } from "@angular/core";
+import { Component } from "@angular/core";
+import { Router } from "@angular/router";
 import { Observable } from "rxjs";
 
 import { UserService } from "../user/user.service";
@@ -11,10 +12,16 @@ import { User } from "../user/user";
 export class HeaderComponent {
 
     user$: Observable<User>;
-    user: User;
 
-    constructor(userService: UserService) {
-        this.user$ = userService.getUser();
-        this.user$.subscribe(user => this.user = user);
+    constructor(
+        private _userService: UserService,
+        private _router: Router
+    ) {
+        this.user$ = _userService.getUser();
+    }
+
+    logout(): void {
+        this._userService.logout();
+        this._router.navigate(['']);
     }
 }
