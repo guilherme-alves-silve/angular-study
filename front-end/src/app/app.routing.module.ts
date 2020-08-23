@@ -5,28 +5,17 @@ import { PhotoListComponent } from "./photos/photo-list/photo-list.component";
 import { PhotoFormComponent } from "./photos/photo-form/photo-form.component";
 import { PhotoListResolver } from "./photos/photo-list/photo-list.resolver";
 import { NotFoundComponent } from "./errors/not-found/not-found.component";
-import { SignInComponent } from "./home/signin/signin.component";
-import { SignUpComponent } from "./home/signup/signup.component";
-import { HomeComponent } from "./home/home.component";
 import { AuthGuard } from "./core/auth/auth.guard";
 
 const routes: Routes = [
+    {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: 'home'
+    },
     { 
-        path: '',  
-        component: HomeComponent,
-        canActivate: [ 
-            AuthGuard 
-        ],
-        children: [
-            {
-                path: '',
-                component: SignInComponent
-            },
-            { 
-                path: 'signup',  
-                component: SignUpComponent
-            },
-        ]
+        path: 'home',  
+        loadChildren: './home/home.module#HomeModule'
     },
     { 
         path: 'user/:userName',  
@@ -48,6 +37,7 @@ const routes: Routes = [
 @NgModule({
     imports: [
         RouterModule.forRoot(routes)
+        //Usar caso o servidor não suporte o procedimento normal do Angular: RouterModule.forRoot(routes, { useHash: true })
     ],
     exports: [
         RouterModule
