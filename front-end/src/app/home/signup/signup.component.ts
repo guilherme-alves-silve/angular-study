@@ -1,11 +1,12 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewChild, ElementRef } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import { Router } from "@angular/router";
 
 import { lowerCaseValidator } from "../../shared/validators/lower-case.validator";
 import { UserNotTakenValidatorService } from "./user-not-taken.validator.service";
 import { SignUpService } from "./signup.service";
 import { NewUser } from "./new-user";
-import { Router } from "@angular/router";
+import { PlatformDetectorService } from "../../core/platform-detector/platform-detector.service";
 
 @Component({
     templateUrl: './signup.component.html'
@@ -13,11 +14,13 @@ import { Router } from "@angular/router";
 export class SignUpComponent implements OnInit {
 
     signupForm: FormGroup;
+    @ViewChild('emailInput') emailInput: ElementRef<HTMLInputElement>;
 
     constructor(
         private _formBuilder: FormBuilder,
         private _signUpService: SignUpService,
         private _userNotTakenValidatorService: UserNotTakenValidatorService,
+        private _platformDetectorService: PlatformDetectorService,
         private _router: Router
     ) { }
 
@@ -26,7 +29,10 @@ export class SignUpComponent implements OnInit {
         this._signUpService.signup(newUser)   
             .subscribe(
                 () => this._router.navigate(['']),
-                error => console.log(error)
+                error => {
+                    this.focusInEmailField();
+                    console.log(error);
+                }
             );
     }
 
@@ -62,5 +68,12 @@ export class SignUpComponent implements OnInit {
                 ]        
             ]
         });
+
+        this.focusInEmailField();
+    }
+
+    private focusInEmailField(): void {
+        this._platformDetectorService.isPlatformBrowser() && 
+            this.emailInput.nativeElement.focus();
     }
 }
