@@ -30,4 +30,9 @@ export class PhotoService {
         formData.append('imageFile', file);
         return this._http.post(`${API}/photos/upload`, formData);
     }
+
+    findById(id: string): Observable<Photo> {
+
+        return this._http.get<Photo>(`${API}/photos/${id}`);
+    }
 }
