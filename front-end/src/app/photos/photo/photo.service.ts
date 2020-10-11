@@ -3,6 +3,7 @@ import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 
 import { Photo } from "./photo";
+import { PhotoComment } from "./photo-comment";
 
 const API = 'http://localhost:3000';
 
@@ -31,8 +32,12 @@ export class PhotoService {
         return this._http.post(`${API}/photos/upload`, formData);
     }
 
-    findById(id: string): Observable<Photo> {
+    findById(id: number): Observable<Photo> {
 
         return this._http.get<Photo>(`${API}/photos/${id}`);
+    }
+
+    getComments(id: number): Observable<PhotoComment[]> {
+        return this._http.get<PhotoComment[]>(`${API}/photos/${id}/comments`);
     }
 }
