@@ -4,7 +4,6 @@ import { Observable } from 'rxjs';
 
 import { PhotoService } from '../photo/photo.service';
 import { Photo } from '../photo/photo';
-import { PhotoComment } from '../photo/photo-comment';
 
 @Component({
     templateUrl: './photo-details.component.html',
@@ -12,8 +11,8 @@ import { PhotoComment } from '../photo/photo-comment';
 })
 export class PhotoDetailsComponent implements OnInit {
 
+    photoId: number;
     photo$: Observable<Photo>;
-    comments$: Observable<PhotoComment[]>;
 
     constructor(
         private _route: ActivatedRoute,
@@ -21,8 +20,7 @@ export class PhotoDetailsComponent implements OnInit {
     ) { }
     
     ngOnInit(): void {
-        const id = this._route.snapshot.params.photoId;
-        this.photo$ = this._photoService.findById(id);
-        this.comments$ = this._photoService.getComments(id);
+        this.photoId = this._route.snapshot.params.photoId;
+        this.photo$ = this._photoService.findById(this.photoId);
     }
 }
