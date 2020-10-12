@@ -13,7 +13,9 @@
         </li>
     </ul>
     <div class="mt-4">
-        <form [formGroup]="commentForm">
+        <form 
+            [formGroup]="commentForm"
+            (submit)="save()">
           <div class="input-group">
             <textarea 
                 formControlName="comment"
@@ -21,7 +23,7 @@
             </textarea>
             <div class="input-group-append">
                 <button 
-                    disabled="commentForm.invalid"
+                    [disabled]="commentForm.invalid"
                     type="submit"
                     class="btn btn-primary pull-left">
                     Publish

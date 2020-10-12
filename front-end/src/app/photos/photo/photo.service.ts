@@ -40,4 +40,10 @@ export class PhotoService {
     getComments(id: number): Observable<PhotoComment[]> {
         return this._http.get<PhotoComment[]>(`${API}/photos/${id}/comments`);
     }
+
+    addComment(photoId: number, commentText: string): Observable<any>  {
+        return this._http.post<PhotoComment>(`${API}/photos/${photoId}/comments`, {
+            commentText
+        });
+    }
 }
