@@ -9,9 +9,9 @@ import { PhotoService } from '../../photo/photo.service';
 @Component({
     selector: 'ap-photo-comments',
     templateUrl: './photo-comments-component.html',
-    styleUrls: [ 'photo-comments.css' ]
+    styleUrls: [ 'photo-comments.css']
 })
-export class PhotoCommentsComponenet implements OnInit {
+export class PhotoCommentsComponent implements OnInit {
 
     @Input() photoId: number;
 

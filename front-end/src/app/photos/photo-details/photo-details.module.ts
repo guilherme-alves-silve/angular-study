@@ -5,17 +5,19 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { PhotoDetailsComponent } from './photo-details.component';
 import { PhotoModule } from '../photo/photo.module';
-import { PhotoCommentsComponenet } from './photo-comments/photo-comments-component';
+import { PhotoCommentsComponent } from './photo-comments/photo-comments-component';
 import { VMessageModule } from 'src/app/shared/vmessage/vmessage.module';
+import { PhotoOwnerOnlyDirective } from './photo-owner-only/photo-owner-only.directive';
 
 @NgModule({
     declarations: [ 
         PhotoDetailsComponent,
-         PhotoCommentsComponenet
+        PhotoCommentsComponent,
+        PhotoOwnerOnlyDirective
     ],
     exports: [ 
         PhotoDetailsComponent, 
-        PhotoCommentsComponenet 
+        PhotoCommentsComponent 
     ],
     imports: [
         CommonModule,

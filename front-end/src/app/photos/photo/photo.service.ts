@@ -37,13 +37,17 @@ export class PhotoService {
         return this._http.get<Photo>(`${API}/photos/${id}`);
     }
 
-    getComments(id: number): Observable<PhotoComment[]> {
-        return this._http.get<PhotoComment[]>(`${API}/photos/${id}/comments`);
+    getComments(photoId: number): Observable<PhotoComment[]> {
+        return this._http.get<PhotoComment[]>(`${API}/photos/${photoId}/comments`);
     }
 
     addComment(photoId: number, commentText: string): Observable<any>  {
         return this._http.post<PhotoComment>(`${API}/photos/${photoId}/comments`, {
             commentText
         });
+    }
+
+    removePhoto(photoId: number): Observable<any> {
+        return this._http.delete(`${API}/photos/${photoId}`)
     }
 }
