@@ -43,4 +43,14 @@ export class PhotoDetailsComponent implements OnInit {
             this._alertService.danger('The photo was not removed', true);
         });
     }
+
+    like(photo: Photo) {
+        this._photoService
+        .like(photo.id)
+        .subscribe(liked => {
+            if (liked) {
+                this.photo$ = this._photoService.findById(photo.id);
+            }
+        });
+    }
 }
