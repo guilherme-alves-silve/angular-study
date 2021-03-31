@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { NavigationStart, Router } from '@angular/router';
-import { clear } from 'console';
 import { Subject } from 'rxjs';
 import { Alert, AlertType } from './alert';
 

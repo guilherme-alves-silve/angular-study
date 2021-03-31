@@ -6,8 +6,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { PhotoDetailsComponent } from './photo-details.component';
 import { PhotoModule } from '../photo/photo.module';
 import { PhotoCommentsComponent } from './photo-comments/photo-comments-component';
-import { VMessageModule } from 'src/app/shared/vmessage/vmessage.module';
+import { VMessageModule } from 'src/app/shared/components/vmessage/vmessage.module';
 import { PhotoOwnerOnlyDirective } from './photo-owner-only/photo-owner-only.directive';
+import { ShowIfLoggedModule } from 'src/app/shared/directives/show-if-logged/show-if-logged.module';
 
 @NgModule({
     declarations: [ 
@@ -24,7 +25,8 @@ import { PhotoOwnerOnlyDirective } from './photo-owner-only/photo-owner-only.dir
         PhotoModule,
         RouterModule, 
         ReactiveFormsModule,
-        VMessageModule
+        VMessageModule,
+        ShowIfLoggedModule
     ]
 })
 export class PhotoDetailsModule {
