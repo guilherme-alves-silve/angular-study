@@ -3,8 +3,9 @@ import { HttpClient, HttpResponse } from "@angular/common/http";
 import { Observable } from "rxjs";
 
 import { NewUser } from "./new-user";
+import { environment } from '../../../environments/environment'
 
-const API_URL = "http://localhost:3000";
+const API = environment.apiUrl;
 
 @Injectable()
 export class SignUpService {
@@ -12,10 +13,10 @@ export class SignUpService {
     constructor(private _http: HttpClient) { }
 
     checkUserNameTaken(userName: string): Observable<Object> {
-        return this._http.get(`${API_URL}/user/exists/${userName}`);
+        return this._http.get(`${API}/user/exists/${userName}`);
     }
 
     signup(newUser: NewUser) {
-        return this._http.post(`${API_URL}/user/signup`, newUser);
+        return this._http.post(`${API}/user/signup`, newUser);
     }
 }

@@ -9,7 +9,7 @@ Project based in the Alura's courses below:
 ## Development server
 
 Run first the server in back-end with `npm start`
-After in the folder front-end, run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+After in the folder front-end, run `ng serve` for a dev server or `ng serve --open` if you want to open a browser. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 ## Code scaffolding
 
