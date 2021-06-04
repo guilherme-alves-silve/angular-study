@@ -1,6 +1,6 @@
 # Angularpic
 
-Project based in the Alura's courses below:
+Project based in the Alura's courses:
 - [Angular parte 1: Fundamentos](https://cursos.alura.com.br/course/angular-fundamentos)
 - [Angular parte 2: Autenticação, Forms e lazy loading](https://cursos.alura.com.br/course/angular-autenticacao)
 - [Angular parte 3: upload, build e novos componentes](https://cursos.alura.com.br/course/angular-upload-build)
