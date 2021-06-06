@@ -4,5 +4,5 @@ import { Component } from "@angular/core";
     templateUrl: './global-error.component.html'
 })
 export class GlobalErrorComponent {
-
+    
 }

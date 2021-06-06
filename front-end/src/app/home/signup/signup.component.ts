@@ -1,12 +1,13 @@
-import { Component, OnInit, ViewChild, ElementRef } from "@angular/core";
-import { FormGroup, FormBuilder, Validators } from "@angular/forms";
-import { Router } from "@angular/router";
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
-import { lowerCaseValidator } from "../../shared/validators/lower-case.validator";
-import { UserNotTakenValidatorService } from "./user-not-taken.validator.service";
-import { SignUpService } from "./signup.service";
-import { NewUser } from "./new-user";
-import { PlatformDetectorService } from "../../core/platform-detector/platform-detector.service";
+import { PlatformDetectorService } from '../../core/platform-detector/platform-detector.service';
+import { UserNotTakenValidatorService } from './user-not-taken.validator.service';
+import { SignUpService } from './signup.service';
+import { NewUser } from './new-user';
+import { lowerCaseValidator } from '../../shared/validators/lower-case.validator';
+import { usernamePasswordValidator } from './username-password.validator';
 
 @Component({
     templateUrl: './signup.component.html',
@@ -28,6 +29,11 @@ export class SignUpComponent implements OnInit {
     ) { }
 
     signup() {
+
+        if (this.signupForm.invalid || this.signupForm.pending) {
+            return;
+        }
+
         const newUser = this.signupForm.getRawValue() as NewUser;
         this._signUpService.signup(newUser)   
             .subscribe(
@@ -70,6 +76,8 @@ export class SignUpComponent implements OnInit {
                     Validators.maxLength(14)
                 ]        
             ]
+        }, {
+            validator: usernamePasswordValidator
         });
 
         this.focusInEmailField();
