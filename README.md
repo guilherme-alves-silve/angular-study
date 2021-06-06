@@ -4,12 +4,13 @@ Project based in the Alura's courses:
 - [Angular parte 1: Fundamentos](https://cursos.alura.com.br/course/angular-fundamentos)
 - [Angular parte 2: Autenticação, Forms e lazy loading](https://cursos.alura.com.br/course/angular-autenticacao)
 - [Angular parte 3: upload, build e novos componentes](https://cursos.alura.com.br/course/angular-upload-build)
-- [Angular parte 4: lapidando o projeto](https://cursos.alura.com.br/course/angular-lapidando-projeto) *NOT YET*
+- [Angular parte 4: lapidando o projeto](https://cursos.alura.com.br/course/angular-lapidando-projeto)
 
 ## Development server
 
-Run first the server in back-end with `npm start`
-After in the folder front-end, run `ng serve` for a dev server or `ng serve --open` if you want to open a browser. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+* Run first the server in back-end with `npm start`
+* Run the log-server in log-server with `npm start`
+* After in the folder front-end, run `ng serve` for a dev server or `ng serve --open` if you want to open a browser. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 ## Code scaffolding
 
